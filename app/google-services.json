@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "701821999054",
+    "firebase_url": "https://transcambpl.firebaseio.com",
+    "project_id": "transcambpl",
+    "storage_bucket": "transcambpl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701821999054:android:eb47fe444f59a269ec7d9f",
+        "android_client_info": {
+          "package_name": "com.example.transcamb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "701821999054-vs8f6ldtv7sirupd8qr8b1cup8ed3e8e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.transcamb",
+            "certificate_hash": "56012f0ecf7502040bf0fa92bef164de43e72e4f"
+          }
+        },
+        {
+          "client_id": "701821999054-5u1jjmtghkqjspfrpfcttn1p4o82lhqq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApjkwV9oecwiIbaj3EeNKBnyVxtUP9Wnw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "701821999054-5u1jjmtghkqjspfrpfcttn1p4o82lhqq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

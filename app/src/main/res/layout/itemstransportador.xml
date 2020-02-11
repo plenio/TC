@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="1dp"
+    android:background="@color/tbtextColor"
+    android:orientation="vertical"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="P"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="40sp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/nomeview"
+            android:layout_width="200dp"
+            android:padding="2dp"
+            android:layout_height="wrap_content"
+            android:text="Nome"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+             />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/horaview"
+                android:layout_marginLeft="5dp"
+
+                android:textColor="@color/colorPrimaryDark"
+                android:text="15h:30min"/>
+
+         </LinearLayout>
+        <TextView
+            android:id="@+id/destinoview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Destino"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="2dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/numeroview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Numero passage"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="2dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/localizacaoview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Localizacao"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="2dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/horapartidaview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hora de partida"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="2dp"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

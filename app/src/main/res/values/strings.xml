@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TransCamb</string>
+    <string name="title_activity_passageiro_maps">Map</string>
+
+
+    <!--<string name="hello_blank_fragment">Hello blank fragment</string>-->
+
+    <!--<string name="minimum_password">Senha curta, no munimo 6 digitos!</string>-->
+    <!--<string name="conf_password">As senhas nao combinam!</string>-->
+    <!--<string name="prenche_campos">Preenche todos campos!</string>-->
+</resources>
