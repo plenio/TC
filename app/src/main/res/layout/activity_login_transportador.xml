@@ -43,7 +43,6 @@
                 android:id="@+id/nemailT"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
                 android:hint="Email"
                 android:inputType="textEmailAddress"/>
 
@@ -60,7 +59,6 @@
                 android:id="@+id/nsenhaT"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
                 android:hint="Password"
                 android:inputType="textPassword" />
 

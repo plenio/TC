@@ -3,8 +3,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.R;
+
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -39,7 +41,8 @@ public class SolicitarTransporte extends AppCompatActivity implements View.OnCli
     FirebaseDatabase database;
     DatabaseReference reference;
     private FirebaseUser user;
-    private String nome;
+    private ProgressBar progressBar;
+
 
 
 
@@ -63,90 +66,8 @@ public class SolicitarTransporte extends AppCompatActivity implements View.OnCli
         solicit = findViewById(R.id.solicitar);
         ehora = findViewById(R.id.horaPartida);
         ehora.setOnClickListener(this);
+        progressBar = findViewById(R.id.progressBarsolicit);
 
-//        FirebaseAuth mauth =FirebaseAuth.getInstance();
-//        user=mauth.getCurrentUser();
-//        database = FirebaseDatabase.getInstance();
-//        reference=database.getReference("Solicitacao");
-//
-//
-//        getNome(new NomeListner(){
-//            @Override
-//            public String nomeUser(String nome) {
-////                addSolicitacao(nome);
-//
-//                Toast.makeText(getBaseContext(), nome, Toast.LENGTH_SHORT).show();
-//                return nome;
-//            }
-//        }, database);
-//
-//
-//        solicit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                getNome(new NomeListner() {
-//                    @Override
-//                    public String nomeUser(String nome) {
-//                        addSolicitacao(nome);
-//
-//                        Toast.makeText(getBaseContext(), nome, Toast.LENGTH_SHORT).show();
-//                        return nome;
-//                    }
-//                }, database);
-//            }
-//        });
-//    }
-//
-//    @Override
-//    public void onClick(View v) {
-//        final Calendar c = Calendar.getInstance();
-//        horas = c.get(Calendar.HOUR_OF_DAY);
-//        minuto = c.get(Calendar.MINUTE);
-//
-//        TimePickerDialog timePicker = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
-//            @Override
-//            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-//                ehora.setText(hourOfDay + ":" + minute);
-//            }
-//        },horas,minuto,false);
-//        timePicker.show();
-//
-//    }
-//    private void addSolicitacao(String nome){
-//        String destino =eDestino.getText().toString().trim();
-//        String numPassa =eNumPassag.getText().toString().trim();
-//        String hora =ehora.getText().toString().trim();
-//        String localizacao =eLocalizacao.getText().toString().trim();
-//
-//        if(!TextUtils.isEmpty(destino+numPassa+hora+localizacao)){
-//
-//          reference.push();
-//          String id=user.getUid();
-//          SolicitarDados dados = new SolicitarDados(destino,numPassa,id,hora,localizacao,nome);
-//          reference.child(id).setValue(dados);
-//            Toast.makeText(this,"Certo ",Toast.LENGTH_LONG).show();
-//
-//        }else{
-//            Toast.makeText(this,"preenche tods campos",Toast.LENGTH_LONG).show();
-//        }
-//    }
-//
-//    private void getNome(final NomeListner nomeListner, FirebaseDatabase reference){
-//        DatabaseReference databaseReferenceUser = reference.getReference("User").child("Passgeiro");
-//
-//        databaseReferenceUser.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                nome = String.valueOf(dataSnapshot.child("nome"));
-//                nomeListner.nomeUser(nome);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
 
         FirebaseAuth mauth =FirebaseAuth.getInstance();
         user=mauth.getCurrentUser();
@@ -158,6 +79,8 @@ public class SolicitarTransporte extends AppCompatActivity implements View.OnCli
             @Override
             public void onClick(View v) {
                 addSolicitacao();
+                solicit.setVisibility(View.INVISIBLE);
+                progressBar.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -190,9 +113,15 @@ public class SolicitarTransporte extends AppCompatActivity implements View.OnCli
             String id=user.getUid();
             SolicitarDados dados = new SolicitarDados(destino,numPassa,id,hora,localizacao,nome);
             reference.child(id).setValue(dados);
-            Toast.makeText(this,"Certo ",Toast.LENGTH_LONG).show();
+
+            Toast.makeText(this,"Solicitao enviada com sucesso ",Toast.LENGTH_LONG).show();
+            Intent it = new Intent(SolicitarTransporte.this, fragment_home.class);
+            startActivity(it);
+            finish();
 
         }else{
+            progressBar.setVisibility(View.INVISIBLE);
+            solicit.setVisibility(View.VISIBLE);
             Toast.makeText(this,"preenche tods campos",Toast.LENGTH_LONG).show();
         }
     }

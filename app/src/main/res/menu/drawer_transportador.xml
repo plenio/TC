@@ -6,33 +6,30 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/menum"
-            android:icon="@drawable/ic_home"
+            android:id="@+id/menumT"
+            android:icon="@drawable/perfil"
             android:title="Tela Inicial"
 
             />
 
         <item
-            android:id="@+id/meuperfil"
+            android:id="@+id/meuperfilT"
             android:icon="@drawable/perfil"
             android:title="Meu Perfil"
 
             />
         <item
-            android:id="@+id/mypost"
+            android:id="@+id/mypostT"
             android:icon="@drawable/meupost"
             android:title="Meu Post" />
     </group>
     <item android:title="Mais">
         <menu>
-            <group android:checkableBehavior="single">
             <item
-                android:id="@+id/convidar"
-                android:title="Convidar Amigos"
-                android:icon="@drawable/ic_collaboration"/>
-            </group>
+                android:id="@+id/convidarT"
+                android:title="Convidar Amigos" />
             <item
-                android:id="@+id/fim"
+                android:id="@+id/fimT"
                 android:title="Terminar Secçao" />
         </menu>
     </item>
