@@ -6,14 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.transcamb.costantes.Constants;
+import com.example.transcamb.utils.SharedPref;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,7 +27,7 @@ import java.util.Map;
 public class CadastroTransportador extends AppCompatActivity {
 
     private EditText Name, Email, Password, confPassword, vMatricula, vMarca;
-    private Button btCadastra;
+    private MaterialButton btCadastra;
 
     private ProgressBar loading;
 
@@ -90,11 +91,18 @@ public class CadastroTransportador extends AppCompatActivity {
                                     map.put("nome",nome);
                                     map.put("marca",marca);
                                     map.put("matricula",matricula);
+                                    map.put("status", "transportador");
                                     String user_id = mAuth.getCurrentUser().getUid();
                                     //DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("User").child("Passageiro").child(user_id);
                                     //current_user_db.setValue(true);
 
-                                    databaseReference.child("User").child("Transportador").child(user_id).setValue(map);
+                                    databaseReference.child(Constants.USER_CHILD)
+                                            .child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(v->{
+                                                if (v.isSuccessful()){
+                                                    SharedPref sharedPref = new SharedPref(getBaseContext());
+                                                    sharedPref.savePreference("transportador");
+                                                }
+                                    });
                                 }
                             }
                         });
@@ -110,6 +118,13 @@ public class CadastroTransportador extends AppCompatActivity {
                     loading.setVisibility(View.INVISIBLE);
                 }
             }
+        });
+
+
+        findViewById(R.id.tv_back).setOnClickListener(v->{
+            Intent intent = new Intent(this, LogIn.class);
+            startActivity(intent);
+            finish();
         });
 
 

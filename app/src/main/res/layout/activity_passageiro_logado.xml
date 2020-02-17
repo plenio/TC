@@ -11,10 +11,6 @@
     tools:context=".PassageiroLogado"
     tools:openDrawer="start">
 
-
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,10 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:id="@+id/toolbarP"
-                android:background="@color/colorAccent"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                android:elevation="4dp"/>
+                app:titleTextColor="@color/md_white"
+                android:background="@color/colorPrimary" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -44,6 +38,7 @@
 
 
     </LinearLayout>
+
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -52,48 +47,4 @@
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_passageirrp"/>
 
-
-
-
-
-<!--    <include-->
-<!--        android:id="@+id/toolbar"-->
-<!--        layout="@layout/toolbar"/>-->
-
-
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_marginLeft="16dp"-->
-<!--        android:layout_marginRight="16dp"-->
-<!--        android:layout_height="wrap_content">-->
-
-<!--    </androidx.recyclerview.widget.RecyclerView>-->
-
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:textColor="#9A9A9A"-->
-<!--        android:textSize="16sp"-->
-<!--        android:layout_marginTop="30dp"-->
-<!--        android:id="@+id/endpag"-->
-<!--        android:textAlignment="center"-->
-<!--        android:text="Fim da lista"/>-->
-
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
-
-<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--            android:id="@+id/solic"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="bottom|end"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:clickable="true"-->
-<!--            android:layout_alignParentRight="true"-->
-<!--            android:layout_margin="@dimen/fab_margin"-->
-<!--            android:src="@drawable/ic_create_black_24dp" />-->
-
-
-<!--    </RelativeLayout>-->
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -34,6 +34,7 @@ public class AdapterPassageiro extends RecyclerView.Adapter<AdapterPassageiro.So
     @Override
     public void onBindViewHolder(@NonNull SolicitarViewHolder holder, int position) {
         holder.tv_nome.setText("Nome: "+mDados.get(position).getNome());
+        holder.tv_name_zero.setText(mDados.get(position).getNome().substring(0, 1));
         holder.tv_horaPartida.setText("Hora Partida: "+mDados.get(position).getHora());
         holder.tv_destino.setText("Destino: "+mDados.get(position).getDestino());
         holder.tv_numPassage.setText("N° Passageiros: "+mDados.get(position).getNumerPassageiros());
@@ -48,12 +49,13 @@ public class AdapterPassageiro extends RecyclerView.Adapter<AdapterPassageiro.So
 
     public class SolicitarViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tv_nome,tv_hora,tv_destino,tv_numPassage, tv_horaPartida,tv_loca;
+        TextView tv_nome,tv_hora,tv_destino,tv_numPassage, tv_horaPartida,tv_loca, tv_name_zero;
 
         public SolicitarViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_nome = itemView.findViewById(R.id.nomeview);
             tv_hora =itemView.findViewById(R.id.horaview);
+            tv_name_zero = itemView.findViewById(R.id.tv_name_zero);
             tv_destino = itemView.findViewById(R.id.destinoview);
             tv_numPassage = itemView.findViewById(R.id.numeroview);
             tv_horaPartida = itemView.findViewById(R.id.horapartidaview);

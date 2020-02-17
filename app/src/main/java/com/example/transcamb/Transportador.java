@@ -46,13 +46,13 @@ public class Transportador extends Fragment {
         view = inflater.inflate(R.layout.transportadorfragment, container, false);
 
 
-        fab = (FloatingActionButton) view.findViewById(R.id.log);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), LoginTransportador.class));
-            }
-        });
+//        fab = (FloatingActionButton) view.findViewById(R.id.log);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getActivity(), LoginTransportador.class));
+//            }
+//        });
 
         rv = view.findViewById(R.id.RV);
         rv.setHasFixedSize(true);

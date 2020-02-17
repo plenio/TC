@@ -4,14 +4,12 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-
         <item
-            android:id="@+id/menum"
+            android:id="@+id/home"
             android:icon="@drawable/ic_home"
-            android:title="Tela Inicial"
+            android:title="Tela inicial"
 
             />
-
         <item
             android:id="@+id/meuperfil"
             android:icon="@drawable/perfil"
@@ -25,12 +23,6 @@
     </group>
     <item android:title="Mais">
         <menu>
-            <group android:checkableBehavior="single">
-            <item
-                android:id="@+id/convidar"
-                android:title="Convidar Amigos"
-                android:icon="@drawable/ic_collaboration"/>
-            </group>
             <item
                 android:id="@+id/fim"
                 android:title="Terminar Secçao" />

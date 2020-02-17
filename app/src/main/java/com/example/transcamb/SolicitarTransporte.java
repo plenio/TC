@@ -1,7 +1,4 @@
 package com.example.transcamb;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.app.TimePickerDialog;
@@ -18,17 +15,15 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
-import java.util.function.Consumer;
 
 public class SolicitarTransporte extends AppCompatActivity implements View.OnClickListener {
     private static final String[] DESTINO = new String[]{
@@ -36,7 +31,7 @@ public class SolicitarTransporte extends AppCompatActivity implements View.OnCli
     };
     private TextView ehora;
     private EditText eDestino,eLocalizacao,eNumPassag;
-    private Button solicit;
+    private MaterialButton solicit;
     private int horas,minuto;
     FirebaseDatabase database;
     DatabaseReference reference;
@@ -49,22 +44,22 @@ public class SolicitarTransporte extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_solicitar_transporte);
+        setContentView(com.example.transcamb.R.layout.activity_solicitar_transporte);
 
-        AutoCompleteTextView editText = findViewById(R.id.DestinoPassag);
+        AutoCompleteTextView editText = findViewById(com.example.transcamb.R.id.DestinoPassag);
         ArrayAdapter<String>adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, DESTINO);
         editText.setAdapter(adapter);
-        AutoCompleteTextView editTex = findViewById(R.id.localizacaoPass);
+        AutoCompleteTextView editTex = findViewById(com.example.transcamb.R.id.localizacaoPass);
         ArrayAdapter<String>adapte = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, DESTINO);
         editTex.setAdapter(adapte);
 
-        eDestino=findViewById(R.id.DestinoPassag);
-        eLocalizacao=findViewById(R.id.localizacaoPass);
-        eNumPassag =findViewById(R.id.numP);
-        solicit = findViewById(R.id.solicitar);
-        ehora = findViewById(R.id.horaPartida);
+        eDestino=findViewById(com.example.transcamb.R.id.DestinoPassag);
+        eLocalizacao=findViewById(com.example.transcamb.R.id.localizacaoPass);
+        eNumPassag =findViewById(com.example.transcamb.R.id.numP);
+        solicit = findViewById(com.example.transcamb.R.id.solicitar);
+        ehora = findViewById(com.example.transcamb.R.id.horaPartida);
         ehora.setOnClickListener(this);
         progressBar = findViewById(R.id.progressBarsolicit);
 
@@ -75,13 +70,10 @@ public class SolicitarTransporte extends AppCompatActivity implements View.OnCli
         reference=database.getReference("Solicitacao");
 
 
-        solicit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addSolicitacao();
-                solicit.setVisibility(View.INVISIBLE);
-                progressBar.setVisibility(View.VISIBLE);
-            }
+        solicit.setOnClickListener(v -> {
+            addSolicitacao();
+            solicit.setVisibility(View.INVISIBLE);
+            progressBar.setVisibility(View.VISIBLE);
         });
     }
 
@@ -101,6 +93,7 @@ public class SolicitarTransporte extends AppCompatActivity implements View.OnCli
 
     }
     private void addSolicitacao(){
+
         String destino =eDestino.getText().toString().trim();
         String numPassa =eNumPassag.getText().toString().trim();
         String hora =ehora.getText().toString().trim();

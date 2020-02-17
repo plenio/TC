@@ -1,73 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbarid"
+
+    <TextView
+        android:id="@+id/tv_logo"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:elevation="0dp"
-        android:gravity="center">
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="12dp"
-                android:text="TransCamb"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimar"
-                android:textSize="20dp"
-                 />
-
-
-
-            <!--<androidx.appcompat.widget.SearchView-->
-                <!--android:id="@+id/sv_pdf"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:clickable="true"-->
-                <!--android:focusable="true"-->
-                <!--android:layout_margin="0dp"-->
-                <!--android:gravity="right"-->
-                <!--android:inputType="text"-->
-                <!--android:layoutDirection="inherit"/>-->
-
-
-        </LinearLayout>
-
+        android:background="@color/colorPrimary"
+        android:layout_height="wrap_content"
+        android:text="Trans Camb"
+        android:layout_alignParentTop="true"
+        android:fontFamily="@font/nunito_semibold"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/md_white"
+        android:padding="12dp"/>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablayout_id"
+            android:layout_below="@id/tv_logo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            app:tabGravity="fill"
-            app:tabIndicatorColor="@color/tbtextColor"
-            app:tabMode="fixed"
-            app:tabTextColor="@color/tbtextColor" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+            android:background="@color/md_white"
+            app:tabTextColor="@color/colorPrimary"
+            />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager_id"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></androidx.viewpager.widget.ViewPager>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tablayout_id"
+        android:layout_marginTop="0dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fb_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
+        android:src="@drawable/ic_user"
+        android:focusable="true" />
 
 
-</LinearLayout>
+
+</RelativeLayout>

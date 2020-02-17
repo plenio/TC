@@ -17,8 +17,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.transcamb.utils.SharedPref;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class PassageiroLogado extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -47,7 +49,7 @@ public class PassageiroLogado extends AppCompatActivity implements NavigationVie
         if (savedInstanceState==null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new fragment_home()).commit();
-            navigationView.setCheckedItem(R.id.menum);
+            navigationView.setCheckedItem(R.id.menumT);
         }
     }
 
@@ -55,10 +57,10 @@ public class PassageiroLogado extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
 
-            case R.id.menum:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new fragment_home()).commit();
-                break;
+//            case R.id.menum:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                        new fragment_home()).commit();
+//                break;
             case R.id.meuperfil:
 //                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
 //                        new fragment_perfil()).commit();
@@ -69,10 +71,18 @@ public class PassageiroLogado extends AppCompatActivity implements NavigationVie
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new fragment_meupost()).commit();
                 break;
-            case R.id.convidar:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new fragment_convidar()).commit();
-                break;
+//            case R.id.convidar:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                        new fragment_convidar()).commit();
+//                break;
+            case R.id.fim:
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+                SharedPref pref = new SharedPref(getBaseContext());
+                pref.clearPreference();
+
+                startActivity(new Intent(PassageiroLogado.this, MainActivity.class));
+                finish();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

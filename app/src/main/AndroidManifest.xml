@@ -35,14 +35,13 @@
         <activity
             android:name=".PassageiroMapsActivity"
             android:label="@string/title_activity_passageiro_maps" />
-        <activity android:name=".LoginTransportador" />
         <activity android:name=".CadastroPassageirro" />
         <activity android:name=".SolicitarTransporte" />
         <activity android:name=".DisponibilidadeTraspo" />
         <activity android:name=".TransportadorLogado" />
         <activity android:name=".PassageiroLogado" />
         <activity android:name=".CadastroTransportador" />
-        <activity android:name=".LogInPassageirro" />
+        <activity android:name=".LogIn" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

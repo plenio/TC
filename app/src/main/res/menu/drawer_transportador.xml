@@ -7,17 +7,14 @@
 
         <item
             android:id="@+id/menumT"
-            android:icon="@drawable/perfil"
-            android:title="Tela Inicial"
-
-            />
+            android:icon="@drawable/ic_home"
+            android:title="Tela Inicial" />
 
         <item
             android:id="@+id/meuperfilT"
             android:icon="@drawable/perfil"
-            android:title="Meu Perfil"
+            android:title="Meu Perfil" />
 
-            />
         <item
             android:id="@+id/mypostT"
             android:icon="@drawable/meupost"

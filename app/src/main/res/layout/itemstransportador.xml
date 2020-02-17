@@ -1,96 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="1dp"
+    android:layout_margin="6dp"
     android:background="@color/tbtextColor"
     android:orientation="vertical"
-    app:cardCornerRadius="5dp">
+    app:cardCornerRadius="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="30dp"
+            android:id="@+id/tv_name_zero"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="P"
-            android:textStyle="bold"
             android:layout_gravity="center"
+            android:padding="10dp"
             android:textColor="@color/colorPrimary"
-            android:textSize="40sp"/>
+            android:textSize="40sp"
+            android:fontFamily="@font/nunito_semibold"
+            android:textStyle="bold"
+            tools:text="P" />
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-        <TextView
-            android:id="@+id/nomeview"
-            android:layout_width="200dp"
-            android:padding="2dp"
-            android:layout_height="wrap_content"
-            android:text="Nome"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp"
-             />
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nomeview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_toStartOf="@+id/horaview"
+                    android:padding="10dp"
+                    android:text="Nome" />
+
+                <TextView
+                    android:id="@+id/horaview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="end"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:layout_marginEnd="10dp"
+                    android:text="15h:30min" />
+
+            </RelativeLayout>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/destinoview"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/horaview"
-                android:layout_marginLeft="5dp"
+                android:padding="10dp"
+                android:text="Destino" />
 
-                android:textColor="@color/colorPrimaryDark"
-                android:text="15h:30min"/>
+            <TextView
+                android:id="@+id/numeroview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Numero passage" />
 
-         </LinearLayout>
-        <TextView
-            android:id="@+id/destinoview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Destino"
-            android:textColor="@color/colorPrimaryDark"
-            android:padding="2dp"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/localizacaoview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Localizacao" />
 
-        <TextView
-            android:id="@+id/numeroview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Numero passage"
-            android:textColor="@color/colorPrimaryDark"
-            android:padding="2dp"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/horapartidaview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Hora de partida" />
 
-        <TextView
-            android:id="@+id/localizacaoview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Localizacao"
-            android:textColor="@color/colorPrimaryDark"
-            android:padding="2dp"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/horapartidaview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hora de partida"
-            android:textColor="@color/colorPrimaryDark"
-            android:padding="2dp"
-            android:textSize="16sp" />
-
-    </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

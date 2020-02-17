@@ -26,13 +26,13 @@ public class Passageiro extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.passageirofragment, container, false);
 
-        fab = (FloatingActionButton) view.findViewById(R.id.logc);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), LogInPassageirro.class));
-            }
-        });
+//        fab = (FloatingActionButton) view.findViewById(R.id.logc);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getActivity(), LogIn.class));
+//            }
+//        });
 
         return view;
     }
