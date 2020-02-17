@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".perfilActivity">
+
+   <de.hdodenhof.circleimageview.CircleImageView
+       xmlns:app="http://schemas.android.com/apk/res-auto"
+       android:id="@+id/profile_image"
+       android:layout_width="96dp"
+       android:layout_gravity="center"
+       android:layout_marginTop="20dp"
+       android:layout_height="96dp"
+       android:src="@drawable/ic_userper"
+       app:civ_border_width="2dp"
+       app:civ_border_color="#FF000000"/>
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="15dp"
+       android:layout_marginTop="30dp"
+      android:orientation="horizontal">
+
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/perf"
+          android:layout_marginLeft="10dp"
+          android:layout_gravity="center"/>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="30dp"
+
+          android:orientation="vertical">
+   <com.google.android.material.textfield.TextInputLayout
+       android:layout_width="match_parent"
+       android:textSize="20sp"
+       android:layout_height="wrap_content">
+
+      <com.google.android.material.textfield.TextInputEditText
+          android:layout_width="match_parent"
+          android:id="@+id/nomeu"
+          android:textStyle="bold"
+          android:textSize="16sp"
+          android:layout_height="wrap_content"
+          android:hint="Nome" />
+   </com.google.android.material.textfield.TextInputLayout>
+       </LinearLayout>
+   </LinearLayout>
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+
+       android:layout_marginTop="15dp"
+       android:layout_marginLeft="25dp"
+
+       android:orientation="horizontal">
+
+  <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+     android:src="@drawable/ic_envelope"
+     android:layout_gravity="center"/>
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="32dp"
+             android:textSize="12sp"
+             android:text="Email"/>
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="32dp"
+             android:id="@+id/emailu"
+             android:textSize="16sp"
+             />
+      </LinearLayout>
+
+   </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>

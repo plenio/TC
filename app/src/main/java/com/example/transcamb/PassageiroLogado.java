@@ -60,8 +60,10 @@ public class PassageiroLogado extends AppCompatActivity implements NavigationVie
                         new fragment_home()).commit();
                 break;
             case R.id.meuperfil:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new fragment_perfil()).commit();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                        new fragment_perfil()).commit();
+                Intent ne = new Intent(PassageiroLogado.this,perfilActivity.class);
+                startActivity(ne);
                 break;
             case R.id.mypost:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
