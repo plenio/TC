@@ -48,6 +48,8 @@ public class LogIn extends AppCompatActivity {
         loginProgress = findViewById(R.id.loginprogressBar);
         loginProgress.setVisibility(View.INVISIBLE);
 
+        SharedPref sharedPref = new SharedPref(getBaseContext());
+
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
 
@@ -80,15 +82,17 @@ public class LogIn extends AppCompatActivity {
 
         //fireb
         mAuth = FirebaseAuth.getInstance();
-        authStateListener = firebaseAuth -> {
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            if (user != null) {
-                Intent intent1 = new Intent(LogIn.this, PassageiroLogado.class);
-                startActivity(intent1);
-                finish();
-                return;
-            }
-        };
+
+        if(sharedPref.readPreference()!= null && sharedPref.readPreference().equals(Constants.PASSAGEIRO)){
+            Intent intent1 = new Intent(LogIn.this, PassageiroLogado.class);
+            startActivity(intent1);
+            finish();
+
+        }else if(sharedPref.readPreference()!= null && sharedPref.readPreference().equals(Constants.TRANSPORTADOR)){
+            Intent intent1 = new Intent(LogIn.this, TransportadorLogado.class);
+            startActivity(intent1);
+            finish();
+        }
 
         btLogin.setOnClickListener(v -> {
             btLogin.setVisibility(View.INVISIBLE);
@@ -119,8 +123,17 @@ public class LogIn extends AppCompatActivity {
                                         String status = String.valueOf(dataSnapshot.child("status").getValue());
 
                                         Log.i("Infoooo", status);
-                                        SharedPref sharedPref = new SharedPref(getBaseContext());
                                         sharedPref.savePreference(status);
+                                        if(sharedPref.readPreference().equals( Constants.PASSAGEIRO)){
+                                            Intent intent1 = new Intent(LogIn.this, PassageiroLogado.class);
+                                            startActivity(intent1);
+                                            finish();
+
+                                        }else if(sharedPref.readPreference().equals(Constants.TRANSPORTADOR)){
+                                            Intent intent1 = new Intent(LogIn.this, TransportadorLogado.class);
+                                            startActivity(intent1);
+                                            finish();
+                                        }
 
                                     }
                                 }
@@ -150,13 +163,12 @@ public class LogIn extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(authStateListener);
+//        mAuth.addAuthStateListener(authStateListener);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mAuth.removeAuthStateListener(authStateListener);
+//        mAuth.removeAuthStateListener(authStateListener);
     }
 }
-
