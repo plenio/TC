@@ -37,7 +37,7 @@ public class fragment_meupost extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_meupost, container,false);
+        View view = inflater.inflate(R.layout.fragment_meupost, container, false);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         recyclerView = view.findViewById(R.id.recyclerView);
@@ -45,51 +45,89 @@ public class fragment_meupost extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         disponibilidadeDados = new ArrayList<>();
 
-        List <String> itens = new ArrayList<>();
+        List<String> itens = new ArrayList<>();
         itens.clear();
         itens.add("solicitar");
         itens.add("disponibilidade");
 
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
 
-        for (String item : itens){
-            databaseReference.child(item).orderByChild("id").equalTo(Objects.requireNonNull(user).getUid())
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.exists()){
-                                for(DataSnapshot snapshot :dataSnapshot.getChildren()){
-                                    DisponibilidadeDados dados = new DisponibilidadeDados();
-                                    dados.setNomeT(snapshot.child("").getValue(String.class));
-                                    dados.setDestinoT(snapshot.child("").getValue(String.class));
-                                    dados.setDesponibilidadeKey(snapshot.child("").getValue(String.class));
-                                    dados.setLocalizacaoT(snapshot.child("").getValue(String.class));
-                                    dados.setHoraT(snapshot.child("").getValue(String.class));
-                                    dados.setTimestemp(snapshot.child("").getValue(String.class));
-                                    disponibilidadeDados.add(dados);
-                                }
-                                transportador = new AdapterTransportador(getContext(),disponibilidadeDados);
-                                recyclerView.setAdapter(transportador);
-
-                                transportador.setOnItemLongClickListener(position -> alertDialog(disponibilidadeDados.get(position).getDesponibilidadeKey()
-                                        ,disponibilidadeDados.get(position).getPath()
-                                        ));
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-
-
-                        }
-                    });
-        }
 
         return view;
     }
 
+        @Override
+        public void onStart() {
+            super.onStart();
+
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            FirebaseUser user = mAuth.getCurrentUser();
+
+            databaseReference.child("Disponibilidade").orderByChild("id").equalTo(Objects.requireNonNull(user).getUid())
+                    .addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    disponibilidadeDados = new ArrayList<>();
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                        DisponibilidadeDados dado = snapshot.getValue(DisponibilidadeDados.class);
+                        disponibilidadeDados.add(dado);
+                    }
+                    transportador = new AdapterTransportador(getActivity(), disponibilidadeDados);
+                    recyclerView.setAdapter(transportador);
+
+                    transportador.setOnItemLongClickListener(position -> alertDialog(disponibilidadeDados.get(position).getDesponibilidadeKey()
+                                        ,disponibilidadeDados.get(position).getPath()
+                                        ));
+//                            }
+                }
+
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+//    }
+
+//        for (String item : itens){
+//            databaseReference.child("Disponibilidade").orderByChild("id").equalTo(Objects.requireNonNull(user).getUid())
+//                    .addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                            if (dataSnapshot.exists()){
+//                                for(DataSnapshot snapshot :dataSnapshot.getChildren()){
+//                                    DisponibilidadeDados dados = new DisponibilidadeDados();
+//                                    dados.setNomeT(snapshot.child("destinoT").getValue(String.class));
+//                                    dados.setDestinoT(snapshot.child("horaT").getValue(String.class));
+//                                    dados.setDesponibilidadeKey(snapshot.child("").getValue(String.class));
+//                                    dados.setLocalizacaoT(snapshot.child("").getValue(String.class));
+//                                    dados.setHoraT(snapshot.child("").getValue(String.class));
+//                                    dados.setTimestemp(snapshot.child("").getValue(String.class));
+//                                    disponibilidadeDados.add(dados);
+//                                }
+//                                transportador = new AdapterTransportador(getContext(),disponibilidadeDados);
+//                                recyclerView.setAdapter(transportador);
+//
+//                                transportador.setOnItemLongClickListener(position -> alertDialog(disponibilidadeDados.get(position).getDesponibilidadeKey()
+//                                        ,disponibilidadeDados.get(position).getPath()
+//                                        ));
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//
+//
+//                        }
+//                    });
+//        }
+//
+//        return view;
+//    }
+//
     private void alertDialog(String codigo, String path) {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
         builder1.setMessage("Oque deseja fazer?");
